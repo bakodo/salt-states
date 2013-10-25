@@ -5,13 +5,13 @@ ssh_config:
     - template: jinja
     - makedirs: True
     - context:
-        repo_name: pillar['repo_name']
+        repo_name: {{ pillar['repo_name'] }}
 
 deploykey:
   file.managed:
     - name: /root/.ssh/github_{{ pillar['repo_name'] }}
     # - source: salt://deploy/id_rsa
-    - contents_pillar: salt['pillar.get']('id_rsa', '')
+    - contents_pillar: salt['pillar.get']('id_rsa')
     - makedirs: True
     - mode: 600
 
