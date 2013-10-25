@@ -5,7 +5,7 @@ ssh_config:
     - template: jinja
     - makedirs: True
     - context:
-        repo_name: salt['pillar.get']('repo_name', '')
+        repo_name: pillar['repo_name']
 
 deploykey:
   file.managed:
