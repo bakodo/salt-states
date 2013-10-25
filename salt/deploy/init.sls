@@ -1,7 +1,7 @@
 ssh_config:
   file.managed:
     - name: /root/.ssh/config
-    - source: salt://deploy/ssh_config
+    - source: salt://deploy/ssh_config.sls
     - makedirs: True
 
 deploykey:
