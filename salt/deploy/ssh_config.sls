@@ -2,5 +2,5 @@ Host github.com
         User git
         HostName github.com
         StrictHostKeyChecking no
-        IdentityFile /root/.ssh/github_{{ pillar['repo_name'] }}
+        IdentityFile /root/.ssh/github_{{ salt['pillar.get']('repo_name', '') }}
         
