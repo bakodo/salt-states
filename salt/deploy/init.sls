@@ -1,7 +1,7 @@
 ssh_config:
   file.managed:
     - name: /root/.ssh/config
-    - source: salt://deploy/ssh_config
+    - source: salt://deploy/ssh_config.jinja
     - makedirs: True
     - context:
         repo_name: salt['pillar.get']('repo_name', '')
