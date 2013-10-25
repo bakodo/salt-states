@@ -1,5 +1,5 @@
 ssh_config:
-  file.append:
+  file.managed:
     - name: /root/.ssh/config
     - source: salt://deploy/ssh_config
     - makedirs: True
@@ -7,13 +7,15 @@ ssh_config:
 deploykey:
   file.managed:
     - name: /root/.ssh/github_{{ pillar['repo_name'] }}
-    - source: salt://deploy/id_rsa
+    # - source: salt://deploy/id_rsa
+    - contents_pillar: salt['pillar.get']('id_rsa', '')
     - makedirs: True
     - mode: 600
 
 publickey:
   file.managed:
     - name: /root/.ssh/github_{{ pillar['repo_name'] }}.pub
-    - source: salt://deploy/id_rsa.pub
+    # - source: salt://deploy/id_rsa.pub
+    - contents_pillar: salt['pillar.get']('id_rsa.pub', '')
     - makedirs: True
     - mode: 600
